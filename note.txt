@@ -1,0 +1,29 @@
+                    <h3>{{$product_detail['Name_product']}}</h3>
+                    <h2>{{ number_format ($product_detail['Reduced_product'])}}đ</h2>
+                    {{-- foreach lần 1 để lấy name content --}}
+                    @foreach ($detail1 as $showname =>$show)
+                    <span>
+                        <a href="">{{$showname}}</a>
+                        {{-- foreach lần 2 để lấy trường và dữ liệu --}}
+                        @foreach ($show as $item)
+                        <li>{{$item->name_information}}:{{$item->value_information}}</li>
+                            
+                        @endforeach
+                    </span>
+                       
+                    @endforeach
+
+
+
+                adđ foreach 
+                public function testauth(Request $request){
+                $phone=$request->phone;
+                $pass=$request->pass;
+            foreach ($phone as $key =>$show) {
+                $testad= new test;
+                $testad->phone=$show;
+                $testad->pass=$pass[$key];
+                $testad->save();
+            }
+    
+    }
