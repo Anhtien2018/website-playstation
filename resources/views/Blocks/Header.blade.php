@@ -79,22 +79,25 @@
           <button type="submit" class="btn"></button>
           <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
         </form>
-        <div  class="result_search  d-flex justify-content-center">
+        <div id="hide"  class="result_search  d-flex justify-content-center">
             <div  class="w-100 bg-white box_product_search  ">
-           <a href="">
-            <div class="product_search d-flex align-items-center justify-content-center justify-content-evenly " >
-              <div class="image_product_search me-2">
-                <img style="width: 60px; border-radius: 50%" src="{{asset('assets/Clients/Image/product/ps5digital.jpg')}}" alt="">
-              </div>
-              <div class="name_product_search me-2">
-                <span><strong class="text-black">Máy PS5 Slim Standard Edition + Dualsense White - Chính Hãng</strong></span>
-              </div>
-              <div class="price_product_search">
-                <span class="me-1"><strong class="text-black">15,000,000</strong></span>
-                <span><del class="text-black" style="font-size: 14px">25,000,000</del></span>
-              </div>
-             </div>
-           </a>
+                @foreach ($show12 as $showsearch)
+                <a href="">
+                  <div class="product_search d-flex align-items-center justify-content-center justify-content-evenly " >
+                    <div class="image_product_search me-2">
+                      <img style="width: 60px; border-radius: 50%" src="{{asset('assets/Clients/Image/product/ps5digital.jpg')}}" alt="">
+                    </div>
+                    <div class="name_product_search me-2">
+                      <span><strong class="text-black">{{$showsearch->Name_product}}</strong></span>
+                    </div>
+                    <div class="price_product_search">
+                      <span class="me-1"><strong class="text-black">15,000,000</strong></span>
+                      <span><del class="text-black" style="font-size: 14px">25,000,000</del></span>
+                    </div>
+                   </div>
+                 </a>
+                @endforeach
+            
              
             </div>
         </div>
@@ -105,4 +108,4 @@
    
   </header>
   <!-- End Header Area -->
-  <script src="{{asset('assets/Clients/js/ajax/search_product.js')}}"></script>
+<script src="{{asset('assets/Clients/js/ajax/home.js')}}"></script>

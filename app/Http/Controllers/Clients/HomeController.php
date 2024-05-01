@@ -22,11 +22,11 @@ class HomeController extends Controller
         // // Show All Category on Menu
         $list_productPS5=$this->product->GetProductPs5();
         $list_productGamePS5=$this->product->GetProductGamePS5();
-        
-        if ($request->ajax()) {
+        // showw banner home
+        if($request->ajax()){
             return view('Clients.Product.List_ProductPS5_Home',compact('list_productPS5'))->render();
         }
-        // showw banner home
+        $show12=Product::all();
         // banner left
         $bannerleft=$this->banner->showbnleft();
         // banner right
@@ -35,12 +35,16 @@ class HomeController extends Controller
         $slide=$this->banner->showslide();
         // banner bottom
         $bannerbottom=$this->banner->showbnbottom();
-        return view('Clients.Home',compact('Title','list_productPS5','list_productGamePS5','bannerleft','bannerright','slide','bannerbottom'));
+        return view('Clients.Home',compact('Title','show12','list_productPS5','list_productGamePS5','bannerleft','bannerright','slide','bannerbottom'));
     }
     public function search_product(Request $request){
-        $word=$request->word;
-        $result_search=$this->product->search_product($word);
-        return view('Clients.Home',compact('result_search'));
+            $word=$request->word;
+            $show12=$this->product->search_product($word);
+            return view('Blocks.Header',compact('show12'))->render();
+        // return view('Block.Home',compact('show12'));
+        
+        
+
     }
     public function like_product($id){
        if(!Auth::check()){

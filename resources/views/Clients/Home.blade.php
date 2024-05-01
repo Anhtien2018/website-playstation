@@ -56,4 +56,3 @@
     {{-- End boxproduct --}}
     
 @endsection
-<script src="{{asset('assets/Clients/js/ajax/home.js')}}"></script>

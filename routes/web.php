@@ -23,7 +23,7 @@ use App\Http\Controllers\Clients\ProductDetailController;
     // like product
     Route::get('like/{id}',[HomeController::class,'like_product']);
     // search_product
-    // Route::get('/search_pr',[HomeController::class,'search_product']);
+    Route::get('/search_pr',[HomeController::class,'search_product'])->name('search');
     // Account
 Route::prefix('Account')->group(function () {
     // register and check register

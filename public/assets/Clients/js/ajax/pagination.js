@@ -23,7 +23,6 @@ $(document).ready(function() {
         $.ajax({
             url:"/?page="+page,
             success:function(data){
-                
              $('#resultpr').html(data);
              location.hash=page;       
             },error:function(err){

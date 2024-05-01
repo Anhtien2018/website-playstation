@@ -37,7 +37,7 @@ class Product extends Model
     }
     public function search_product($word){
         return DB::table($this->table)->
-        where($this->table.'.Name_product','like',$word)->get();
+        where($this->table.'.Name_product','like','%'.$word.'%')->get();
     }
     // favorite product
     public function favorite_product(){
