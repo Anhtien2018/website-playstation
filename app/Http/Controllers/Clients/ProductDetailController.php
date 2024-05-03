@@ -37,7 +37,6 @@ class ProductDetailController extends Controller
         $get_cate=$this->detail->getcategory_product($id);
         // show product by category detail  
         $showprdetailbycate=$this->detail->show_product_by_category($get_cate[0]->id_variant_category);
-       
         return view('Clients.ProductDetail', compact('Title','product_detail','detail1','image_detail','banner_detail','product_include','policy','showprdetailbycate','information'));
     }
    

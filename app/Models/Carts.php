@@ -74,6 +74,10 @@ class Carts extends Model
                 Session::put('cart', $cart);
             }
         }
+        public function removeall(){
+            $cart=[];
+            Session::put('cart', $cart);
+        }
         // Change quantity hight
         public function change_quantityhight($id){
             $cart= Session::get('cart',[]);

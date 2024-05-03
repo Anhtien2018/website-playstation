@@ -2,6 +2,7 @@
 @section('Title')
     {{$Title}}
 @endsection
+
  <!-- Start Banner Area -->
  <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -23,7 +24,7 @@
 <img class="w-25 " src="{{asset('assets/Clients/Image/banner/no-buy.png')}}" alt="">
     </div> 
        @else
-<section class="cart_area">
+<section class="cart_area col-lg-12 col-md-2">
     <div class="container">
         <table class="table text-center">
             <thead>
@@ -44,32 +45,37 @@
                     <td  ><img style="width: 100px;" src="{{asset('assets/Clients/Image/product/'.$show['Image'])}}" alt=""></td>
                     <td>{{$show['Name']}}</td>
                     <td>{{number_format($show['Reduced'])}}<sup class="text-black">đ</sup></td>
-                    <td><input class="w-25" type="text" min="1" name="" onblur="writequantity({{$show['id_product']}})"  id="quantity"  value="{{$show['quantity']}}" >
+                    <td><input class="w-25 inputquan" type="text" min="1" name="" data-id="{{$show['id_product']}}"  id="quantity"  value="{{$show['quantity']}}" >
                         <button onclick="changequantityhight({{$show['id_product']}})" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                         <button onclick="changequantitylow({{$show['id_product']}})"  class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                     </td>
-                    
                     <td>{{number_format($show['quantity']*$show['Reduced'])}}<sup class="text-black">đ</sup></td>
-                    <td ><button class="btn btn-danger btndelete"  onclick="return confirm('Bạn có muốn xóa sản phẩm này không ?')" data-id="{{$show['id_product']}}" >Xóa<i class="fa fa-trash" ></i></button></td>
+                    <td ><button class="btn btn-danger btndelete" href=""     data-id="{{$show['id_product']}}" >Xóa<i class="fa fa-trash" ></i></button></td>
                   </tr>
                 @endforeach
                   <tr>
-                    <td>Tổng Tiền: {{number_format($total_price)}}<sup class="text-black" >đ</sup> </td> 
+                  <td  ><strong>Tổng:</strong></td>
+                  <td>{{number_format($total_price)}}<sup class="text-black" >đ</sup></td>          
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                    <td colspan="8"><button class="btn btn-danger delete-all">Xóa Hết</button></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a  href="{{route('Cart.checkout')}}" class="btn primary-btn mb-3 text-white    " >Tiến Hành Thanh Toán</a></td>
                   </tr>
             </tbody>
-          </table>
+          </table>  
     </div>
 </section>
 @endif
 
-<!--================End Cart Area =================-->
-{{-- <td>
-    <div class="cupon_text d-flex align-items-center">
-        <input type="text" placeholder="Coupon Code">
-        <a class="primary-btn" href="#">Apply</a>
-    </div>
-</td> --}}
-{{-- <td>
-    <a class="gray_btn" href="#">Update Cart</a>
-</td> --}}
+
 

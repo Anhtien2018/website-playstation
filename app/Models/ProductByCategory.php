@@ -16,9 +16,21 @@ class ProductByCategory extends Model
     protected $table4='variant_category';
     protected $table5='image_by_variantcategory';
     protected $table6='banner_by_variantcategory';
-    public function GetProductByCategory(){
+    public function GetProductByCategory($id){
         return DB::table($this->table)->
-        where('id_variant_category','=',$this->id)->paginate(12);
+        where('id_variant_category','=',$id)->paginate(12);
+    }
+    public function GetProductByCategoryfilterorderby($id,$selectnameprice){
+        return DB::table($this->table)->
+        where('id_variant_category','=',$id)->orderBy('Reduced_product',$selectnameprice)->paginate(12);
+    }
+    public function GetProductByCategoryfilterpagination($id,$selectlimit){
+        return DB::table($this->table)->
+        where('id_variant_category','=',$id)->paginate($selectlimit);
+    }
+    public function GetProductByCategoryfilterall($id,$selectlimit,$selectnameprice){
+        return DB::table($this->table)->
+        where('id_variant_category','=',$id)->orderBy('Reduced_product',$selectnameprice)->paginate($selectlimit);
     }
     public function getnamevariantcate($id){
         return DB::table($this->table1)->join($this->table4,$this->table4.'.id_category','=',$this->table1.'.id_category')->
@@ -33,42 +45,5 @@ class ProductByCategory extends Model
     public function get_banner_mayps5($id){
         return DB::table($this->table6)->where('id_variant_category','=',$id)->get();
     }
-    public function FilterPriceProductByCategory(){
-        $list_productbycategory=DB::table($this->table)->
-        where($this->table.'.id_variant_category','=',$this->id)->
-        orderBy($this->table.'.Reduced_product',$this->selectnameprice)->
-        get();
-        return $list_productbycategory;
-        }
-    public function FilterNameProductByCategory(){
-        $list_productbycategory=DB::table($this->table)->
-        where($this->table.'.id_variant_category','=',$this->id)->
-        orderBy($this->table.'.Name_product',$this->selectnameprice)->
-        get();
-        return $list_productbycategory;
-    }
-    public function FilterLimitProductByCategory(){
-        $list_productbycategory=DB::table($this->table)->
-        where($this->table.'.id_variant_category','=',$this->id)->
-        limit($this->selectlimit)->
-        get();
-        return $list_productbycategory;
-    }
-    public function FilterPriceLimitProductByCategory (){
-        $list_productbycategory=DB::table($this->table)->
-        where($this->table.'.id_variant_category','=',$this->id)->
-        orderBy($this->table.'.Reduced_product',$this->selectnameprice)->
-        limit($this->selectlimit)->
-        get();
-        return $list_productbycategory;
-        
-    }
-    public function FilterNameLimitProductByCategory (){
-        $list_productbycategory=DB::table($this->table)->
-        where($this->table.'.id_variant_category','=',$this->id)->
-        orderBy($this->table.'.Name_product',$this->selectnameprice)->
-        limit($this->selectlimit)->
-        get();
-        return $list_productbycategory;
-    }
+   
 }

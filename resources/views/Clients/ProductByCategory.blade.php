@@ -40,10 +40,10 @@
                 <div class="sorting">
                     <select name="selectnameprice" id="selectnameprice" data-id="{{$id}}" data-selectname="">
                         <option value=""> Chọn</option>
-                        <option value="priceasc">Giá tăng dần</option>
-                        <option value="pricedesc">Giá giảm dần</option>
-                        <option value="nameasc">Tên từ A tới Z </option>
-                        <option value="namedesc">Tên từ Z tới A</option>
+                        <option value="asc">Giá tăng dần</option>
+                        <option value="desc">Giá giảm dần</option>
+                        <option value="asc">Tên từ A tới Z </option>
+                        <option value="desc">Tên từ Z tới A</option>
                     </select>
                 </div>
                 <div class="sorting mr-auto">
@@ -53,18 +53,15 @@
                         <option value="10">Hiển thị 10 sản phẩm</option>
                         <option value="20">Hiển thị 20 sản phẩm</option>
                     </select>
-                </div>
+                </div>                               
                 <div class="pagination">
                 {{ $show_list_productbycategory->links('Blocks.Pagination')}}
                 </div>
             </div>
             <!-- End Filter Bar -->
             <!-- Start Best Seller -->
-            <section class="lattest-product-area pt-3 ">
-                <div class="row" id="productbycategoryresult">
+            <section class="lattest-product-area pt-3 " >
                     @include('Clients.Product.List_Product_By_Category')
-                </div>
-           
             </section>
             <!-- End Best Seller -->
             <!-- Start Filter Bar -->

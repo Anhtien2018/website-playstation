@@ -1,5 +1,5 @@
 <!-- Start Header Area -->
-<header class="header_area sticky-header">
+<header class="header_area sticky-header" >
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light main_box">
         <div class="container">
@@ -73,33 +73,15 @@
     </div>
     <div class="search_input " id="search_input_box">
       <div class="container">
-        <form action="" class="d-flex justify-content-between m-0">
+        <form action="{{route('search')}}" class="d-flex justify-content-between m-0">
           @csrf
           <input type="text" name="word" class="form-control" id="search_input" placeholder="Tìm Kiếm">
           <button type="submit" class="btn"></button>
           <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
         </form>
-        <div id="hide"  class="result_search  d-flex justify-content-center">
-            <div  class="w-100 bg-white box_product_search  ">
-                @foreach ($show12 as $showsearch)
-                <a href="">
-                  <div class="product_search d-flex align-items-center justify-content-center justify-content-evenly " >
-                    <div class="image_product_search me-2">
-                      <img style="width: 60px; border-radius: 50%" src="{{asset('assets/Clients/Image/product/ps5digital.jpg')}}" alt="">
-                    </div>
-                    <div class="name_product_search me-2">
-                      <span><strong class="text-black">{{$showsearch->Name_product}}</strong></span>
-                    </div>
-                    <div class="price_product_search">
-                      <span class="me-1"><strong class="text-black">15,000,000</strong></span>
-                      <span><del class="text-black" style="font-size: 14px">25,000,000</del></span>
-                    </div>
-                   </div>
-                 </a>
-                @endforeach
-            
-             
-            </div>
+        <div id="hide"  class="  d-flex justify-content-center">
+          <div   class="w-100  result_search  bg-white box_product_search  ">
+          </div>
         </div>
         
       </div> 

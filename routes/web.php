@@ -6,6 +6,7 @@ use App\Http\Controllers\Clients\AccountController;
 use App\Http\Controllers\Clients\ProductByCategoryController;
 use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\ProductDetailController;
+use App\Http\Controllers\Clients\CheckoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,8 @@ use App\Http\Controllers\Clients\ProductDetailController;
     // like product
     Route::get('like/{id}',[HomeController::class,'like_product']);
     // search_product
-    Route::get('/search_pr',[HomeController::class,'search_product'])->name('search');
+    Route::get('/search_pr',[HomeController::class,'search_product']);
+    Route::get('/search_pr1',[HomeController::class,'Auth_search_product'])->name('search');
     // Account
 Route::prefix('Account')->group(function () {
     // register and check register
@@ -59,6 +61,7 @@ Route::prefix('Cart')->group(function(){
        Route::post('/addcart/{product}',[CartController::class,'addtoCart'])->name('Cart.addpost');
        Route::get('/addcart/{product}',[CartController::class,'addtoCart'])->name('Cart.addget');
        Route::get('/remove/{id}',[CartController::class,'removeone']);
+       Route::get('/removeall',[CartController::class,'removeall']);
         // Remove one item in session
         // change quantity item in session
         Route::get('/changequantityhight',[CartController::class,'quantityhight']);
@@ -66,5 +69,8 @@ Route::prefix('Cart')->group(function(){
         Route::get('/changequantitywrite',[CartController::class,'quantitywrite']);
 
 });
+        Route::get('/checkout',[CheckoutController::class,'checkout'])->name('Cart.checkout');
+        Route::get('/getdistrict',[CheckoutController::class,'getdistrict']);
+
    
 

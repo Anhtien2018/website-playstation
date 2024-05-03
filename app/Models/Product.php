@@ -27,7 +27,7 @@ class Product extends Model
     }
     public function GetProductGamePS5(){
         return DB::table($this->table4)->join($this->table,$this->table.'.id_variant_category','=',$this->table4.'.id_variant_category')->
-        where($this->table.'.id_variant_category','=',2)->paginate(3);
+        where($this->table.'.id_variant_category','=',2)->paginate(8);
     }
    
     // getproduct detail and getproduct add cart
@@ -38,6 +38,22 @@ class Product extends Model
     public function search_product($word){
         return DB::table($this->table)->
         where($this->table.'.Name_product','like','%'.$word.'%')->get();
+    }
+     public function Authsearch_product($word){
+        return DB::table($this->table)->
+        where($this->table.'.Name_product','like','%'.$word.'%')->paginate(12);
+    }
+    public function Authsearch_productorderby($word,$selectnamepricesearch){
+        return DB::table($this->table)->
+        where($this->table.'.Name_product','like','%'.$word.'%')->orderBy('Reduced_Product',$selectnamepricesearch)->paginate(12);
+    }
+    public function Authsearch_productlimit($word,$selectlimitsearch){
+        return DB::table($this->table)->
+        where($this->table.'.Name_product','like','%'.$word.'%')->paginate($selectlimitsearch);
+    }
+    public function Authsearch_productall($word,$selectlimitsearch,$selectnamepricesearch){
+        return DB::table($this->table)->
+        where($this->table.'.Name_product','like','%'.$word.'%')->orderBy('Reduced_product',$selectnamepricesearch)->paginate($selectlimitsearch);
     }
     // favorite product
     public function favorite_product(){

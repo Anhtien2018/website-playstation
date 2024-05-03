@@ -1,3 +1,4 @@
+<div class="row" id="productbycategoryresult">
 @foreach ($show_list_productbycategory as $product)
 <!-- single product -->
 <div style="width: 300px;"  class="col-lg-4 col-md-6">
@@ -44,4 +45,5 @@
 </div>
 </div>
 <!-- End single product -->
-@endforeach   
+@endforeach
+</div>   

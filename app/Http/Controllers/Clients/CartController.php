@@ -39,6 +39,10 @@ class CartController extends Controller
       $this->cart->removeonepr($id);
       return redirect()->back()->with('success','Bạn đã xóa sản phẩm thành công');
     }
+    public function removeall(){
+      $this->cart->removeall();
+      return redirect()->route('Home')->with('success','Bạn đã xóa giỏ hàng thành công');
+    }
       // change quantity when i click
     public function quantityhight(Request $request){
         $id=$request->id;
@@ -58,4 +62,5 @@ class CartController extends Controller
       $data= $this->cart->change_write($id,$quantity);
       return redirect()->back()->with($data['alert'],$data['mess']);
 }
+
 }

@@ -23,10 +23,6 @@ class HomeController extends Controller
         $list_productPS5=$this->product->GetProductPs5();
         $list_productGamePS5=$this->product->GetProductGamePS5();
         // showw banner home
-        if($request->ajax()){
-            return view('Clients.Product.List_ProductPS5_Home',compact('list_productPS5'))->render();
-        }
-        $show12=Product::all();
         // banner left
         $bannerleft=$this->banner->showbnleft();
         // banner right
@@ -35,16 +31,45 @@ class HomeController extends Controller
         $slide=$this->banner->showslide();
         // banner bottom
         $bannerbottom=$this->banner->showbnbottom();
-        return view('Clients.Home',compact('Title','show12','list_productPS5','list_productGamePS5','bannerleft','bannerright','slide','bannerbottom'));
+        return view('Clients.Home',compact('Title','list_productPS5','list_productGamePS5','bannerleft','bannerright','slide','bannerbottom'));
     }
+    // search live ajax
     public function search_product(Request $request){
             $word=$request->word;
             $show12=$this->product->search_product($word);
-            return view('Blocks.Header',compact('show12'))->render();
-        // return view('Block.Home',compact('show12'));
-        
-        
-
+            return response()->json($show12);                      
+    }
+    // search by word 
+    public function Auth_search_product(Request $request){
+        $Title="Tìm Kiếm";
+        // Lấy word
+        $word=$request->word;
+        // Gọi hàm
+        $list_product_search=$this->product->Authsearch_product($word);   
+        // Lưu trữ biến word
+        $list_product_search->appends(['word'=>$word]);
+        // Nếu có ajax
+        if($request->ajax()){
+            // lấy dữ liệu
+            $word=$request->word;
+            $selectnamepricesearch=$request->selectnamepricesearch;
+            $selectlimitsearch=$request->selectlimitsearch;
+            // xét điều kiện
+            if($selectnamepricesearch=="" && $selectlimitsearch==""){
+                return view('Clients.Product.List_Search_Product',compact('list_product_search'));
+            }else if($selectnamepricesearch!=="" && $selectlimitsearch=="" ){
+             $list_product_search=$this->product->Authsearch_productorderby($word,$selectnamepricesearch);   
+                
+                return view('Clients.Product.List_Search_Product',compact('list_product_search'));
+            }else if($selectlimitsearch!=="" && $selectnamepricesearch==""){
+             $list_product_search=$this->product->Authsearch_productlimit($word,$selectlimitsearch);   
+                return view('Clients.Product.List_Search_Product',compact('list_product_search'));
+            }else if($selectnamepricesearch!=="" && $selectlimitsearch!==""){
+             $list_product_search=$this->product->Authsearch_productall($word,$selectlimitsearch,$selectnamepricesearch);   
+                return view('Clients.Product.List_Search_Product',compact('list_product_search'));  
+            }
+        }
+        return view('Clients.Search_Product',compact('list_product_search','Title','word'));
     }
     public function like_product($id){
        if(!Auth::check()){
