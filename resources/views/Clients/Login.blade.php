@@ -2,6 +2,7 @@
 @section('Title')
     {{$Title}}
 @endsection
+
 <!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
     <div class="container">

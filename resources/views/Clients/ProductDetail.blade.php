@@ -13,7 +13,6 @@
                     <div class="single-prd-item">
                         <img class="img-fluid" src="{{asset('assets/Clients/Image/product/'.$product_detail['Image_product'])}}" alt="">
                     </div> 
-                 
                     @foreach ($image_detail as $show_image)
                     <div class="single-prd-item">
                         <img class="img-fluid " src="{{asset('assets/Clients/Image/product/'.$show_image->image)}}" alt="">
@@ -110,10 +109,10 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-                 aria-selected="false">Giới Thiệu</a>
+                 aria-selected="false">Chăm Sóc Khách Hàng</a>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content p-2" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   {{-- box product --}}
 <!-- single product slide -->
@@ -194,6 +193,13 @@
                     @endforeach
                 </div>
             </div>
+            {{-- chat --}}
+            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="col-lg-12 col-md-12">
+                   @livewire('Chat-App')
+                </div>
+            </div>
+            {{-- end chat --}}
             {{-- end profile --}}
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div class="row">
@@ -246,28 +252,29 @@
                             </div>
                         </div>
                     </div>
+                    @if (Auth::check())
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <h4>Post a comment</h4>
+                            <h4>Bình luận sản phẩm</h4>
                             <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ Và Tên" value="{{Auth::user()->name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Địa Chỉ Email" value="{{Auth::user()->email}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+                                        <input type="text" class="form-control" id="number" name="number" placeholder="Số Điện Thoại" value="{{Auth::user()->phone}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
+                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Nội Dung"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
@@ -276,6 +283,38 @@
                             </form>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-6">
+                        <div class="review_box">
+                            <h4>Bình luận sản phẩm</h4>
+                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Họ Và Tên" >
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Địa Chỉ Email" >
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="number" name="number" placeholder="Số Điện Thoại">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Nội Dung"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" value="submit" class="btn primary-btn">Submit Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
          

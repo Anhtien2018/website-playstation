@@ -45,50 +45,33 @@
                             <span>Email</span>
                             <input type="text" class="form-control" id="company" name="company" placeholder="Vui lòng nhập email">
                         </div>
-                        <div class="col-md-6 form-group p_star">
+                        <div class="col-md-6 form-group ">
                             <label for="">Thành phố</label>
-                            <select id="province" class="country_select w-100">
+                            <select class="country_select w-100" id="selectprovince" >
                                     <option class="w-100" value="">Chọn</option>
-                                    @foreach ($province as $showprovince)
-                                        <option value="{{$showprovince->matp}}">{{$showprovince->name}}</option>
+                                    @foreach ($province as $item)
+                                    <option value="{{$item->matp}}">{{$item->name}}</option>
                                     @endforeach
+                                </select>
+                        </div>
+                        <div class="col-md-6 form-group ">
+                            <label for="resultdt">Quận huyện</label>
+                            <select id="resultdt" class="district_select w-100 show" >
+                                    <option value="">Chọn</option>   
                             </select>
                         </div>
-                        <div class="col-md-6 form-group p_star">
-                            <label for="">Quận huyện</label>
-                            <select id="result" class="country_select w-100 ">
-                                    <option value="">Chọn</option>                            
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group p_star">
+                        <div class="col-md-6 form-group ">
                             <label for="">Phường xã</label>
-                            <select id="ward" class="country_select w-100">
+                            <select  class="ward_select w-100" id="ward">
                                     <option class="w-100" value="">Chọn</option>
                             </select>
                         </div>
-                        <div class="col-md-6 form-group p_star">
+                        <div class="col-md-6 form-group ">
                             <label for="">Số nhà</label>
                             <input type="text" class="form-control" id="last" name="name" placeholder="Vui lòng nhập số nhà">
                         </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add1" name="add1">
-                            <span class="placeholder" data-placeholder="Address line 01"></span>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add2" name="add2">
-                            <span class="placeholder" data-placeholder="Address line 02"></span>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="city" name="city">
-                            <span class="placeholder" data-placeholder="Town/City"></span>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">District</option>
-                                <option value="2">District</option>
-                                <option value="4">District</option>
-                            </select>
-                        </div>
+                        
+                        
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
                         </div>
@@ -110,17 +93,18 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="order_box">
-                        <h2>Your Order</h2>
+                        <h2>Đơn Hàng Của Bạn</h2>
                         <ul class="list">
-                            <li><a href="#">Product <span>Total</span></a></li>
-                            <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                            <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
+                            <li class="d-flex justify-content-between" ><span>Tên sản phẩm</span><span>Số lượng</span><span>Tổng tiền</span></li>
+                            @foreach ($cart as $showcart)
+                            <li><a class="d-flex justify-content-between " href="{{route('view',['id'=>$showcart['id_product'],'slugdetail'=>Str::slug($showcart['Name'])])}}"> <span class="w-25">{{$showcart['Name']}}</span> <span class="middle me-4 ">x {{$showcart['quantity']}}</span> <span class="last">{{number_format($showcart['Reduced'] * $showcart['quantity'])}}<sup class="text-black">đ</sup></span></a></li>
+                            <hr>
+                            @endforeach
+                           
+                            
                         </ul>
                         <ul class="list list_2">
-                            <li><a href="#">Subtotal <span>$2160.00</span></a></li>
-                            <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                            <li><a href="#">Total <span>$2210.00</span></a></li>
+                            <li class="d-flex justify-content-between"><strong>Thành tiền:</strong><span>{{number_format($total_price)}}<sup class="text-black">đ</sup></span></li>
                         </ul>
                         <div class="payment_item">
                             <div class="radion_btn">
@@ -152,5 +136,8 @@
             </div>
         </div>
     </div>
+
+
+
 </section>
 <!--================End Checkout Area =================-->

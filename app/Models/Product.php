@@ -31,10 +31,7 @@ class Product extends Model
     }
    
     // getproduct detail and getproduct add cart
-    public function GetProductDetail(){
-        $getproduct_detail=DB::table($this->table)->where('id','=',$this->id)->get();
-        return $getproduct_detail;
-    }
+    
     public function search_product($word){
         return DB::table($this->table)->
         where($this->table.'.Name_product','like','%'.$word.'%')->get();

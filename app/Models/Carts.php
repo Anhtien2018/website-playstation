@@ -20,7 +20,7 @@ class Carts extends Model
             //  nếu biến cart đã tồn tại id thì thêm số lượng
             if(isset($cart[$product->id])){
                 // nếu có truyền quantity thì cộng bằng nó hoặc cộng thêm 1
-                if(($cart[$product->id]['quantity'])>($this->checkquantitycart($product->id)[0]->Quantity_product)){
+                if(($quantity)>($this->checkquantitycart($product->id)[0]->Quantity_product)){
                     $data=[
                         'mess'=>'Số lượng sản phẩm không đủ',
                         'alert'=>'warning'

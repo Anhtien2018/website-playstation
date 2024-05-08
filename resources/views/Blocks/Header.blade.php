@@ -63,8 +63,11 @@
                 <a href="{{route('Cart.view')}}" class=""><span class="ti-bag"></span></a>
                 
               </li>
-              <li class="nav-item">
+              <li class="nav-item p-0">
                 <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+              </li>
+              <li class="nav-item p-0">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="search"><span class="lnr lnr-envelope" id="search"></span></button>
               </li>
             </ul>
           </div>
@@ -73,17 +76,7 @@
     </div>
     <div class="search_input " id="search_input_box">
       <div class="container">
-        <form action="{{route('search')}}" class="d-flex justify-content-between m-0">
-          @csrf
-          <input type="text" name="word" class="form-control" id="search_input" placeholder="Tìm Kiếm">
-          <button type="submit" class="btn"></button>
-          <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-        </form>
-        <div id="hide"  class="  d-flex justify-content-center">
-          <div   class="w-100  result_search  bg-white box_product_search  ">
-          </div>
-        </div>
-        
+        @livewire('Live-Search_Product')
       </div> 
       
   </div>
@@ -91,3 +84,24 @@
   </header>
   <!-- End Header Area -->
 <script src="{{asset('assets/Clients/js/ajax/home.js')}}"></script>
+{{-- modal chat --}}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        @if (Auth::check())
+        @livewire('Chat-App')
+        @else
+        <span>Vui lòng đăng nhập để có thể trò chuyện với shop !</span>
+        <span><a  href="{{route('Account.Login')}}">Đăng Nhập</a></span>
+        @endif
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- end modal chat --}}

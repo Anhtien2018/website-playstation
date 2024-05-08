@@ -16,6 +16,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
+    @livewireStyles
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     
@@ -31,10 +32,7 @@
    <link rel="stylesheet" href="{{asset('assets/Clients/css/magnific-popup.css')}}">
    <link rel="stylesheet" href="{{asset('assets/Clients/css/main.css')}}">
    <link rel="stylesheet" href="{{asset('assets/Clients/css/bootstrap.min.css')}}">
-   <link rel="stylesheet" href="{{asset('assets/Clients/css/customer/style.css')}}">
-   
- 
-   
+   <link rel="stylesheet" href="{{asset('assets/Clients/css/customer/style.css')}}">   
     <title>@yield('Title')</title>
 </head>
    
@@ -51,10 +49,9 @@
     @yield('Main')
    </main>
     {{-- Footer --}}
-    @include('Blocks.Footer')s
+    @include('Blocks.Footer')s  
     
 </body>
-
     <script src="{{asset('assets/Clients/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -77,4 +74,5 @@
     <script src="{{asset('assets/Clients/js/ajax/productbycategory.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/cart.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/checkout.js')}}"></script>
+    @livewireScripts
 </html>

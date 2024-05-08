@@ -15,7 +15,8 @@ class Checkout extends Model
     public function getprovince(){
         return DB::table($this->table)->get();
     }
-    public function getdistrict($matp){
-        return DB::table($this->table1)->where($this->table1.'.matp','=',$matp)->get();
+   
+    public function getdistrict($id){
+        return DB::table($this->table1)->where($this->table1.'.matp','=',$id)->get();
     }
 }

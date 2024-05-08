@@ -17,10 +17,7 @@ class ProductDetail extends Model
     protected $table7="variant_category";
     protected $table8="detail_information";
     protected $table9="image_detail";
-    public function GetDetailProduct($id){
-        return DB::table($this->table)->
-        where($this->table.'.id','=',$id)->get();
-    }
+   
     public function detail($id){
         return DB::table($this->table1)->
         join($this->table2,$this->table2.'.id_content','=',$this->table1.'.id_content')->

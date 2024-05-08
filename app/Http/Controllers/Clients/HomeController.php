@@ -33,12 +33,6 @@ class HomeController extends Controller
         $bannerbottom=$this->banner->showbnbottom();
         return view('Clients.Home',compact('Title','list_productPS5','list_productGamePS5','bannerleft','bannerright','slide','bannerbottom'));
     }
-    // search live ajax
-    public function search_product(Request $request){
-            $word=$request->word;
-            $show12=$this->product->search_product($word);
-            return response()->json($show12);                      
-    }
     // search by word 
     public function Auth_search_product(Request $request){
         $Title="Tìm Kiếm";
@@ -58,8 +52,7 @@ class HomeController extends Controller
             if($selectnamepricesearch=="" && $selectlimitsearch==""){
                 return view('Clients.Product.List_Search_Product',compact('list_product_search'));
             }else if($selectnamepricesearch!=="" && $selectlimitsearch=="" ){
-             $list_product_search=$this->product->Authsearch_productorderby($word,$selectnamepricesearch);   
-                
+             $list_product_search=$this->product->Authsearch_productorderby($word,$selectnamepricesearch);     
                 return view('Clients.Product.List_Search_Product',compact('list_product_search'));
             }else if($selectlimitsearch!=="" && $selectnamepricesearch==""){
              $list_product_search=$this->product->Authsearch_productlimit($word,$selectlimitsearch);   
