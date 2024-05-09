@@ -19,7 +19,9 @@
                 @if ($showmessage->sender=='user')
                 <div class="d-flex justify-content-between">
                   <p class="small mb-1 text-muted">{{$showmessage->created_at}}</p>
-                  <p class="small mb-1">{{Auth::user()->name}}</p>
+                  @foreach ($this->chat->getuser($showmessage->id_user) as $shownameuser)
+                  <p class="small mb-1">{{$shownameuser->name}}</p>
+                  @endforeach
                 </div>
                 <div class="d-flex flex-row justify-content-end mb-4 pt-1">
                   <div>
@@ -31,7 +33,9 @@
               {{-- ngược lại là admin --}}
                 @else    
                 <div class="d-flex justify-content-between">
-                  <p class="small mb-1">Admin</p>
+                  @foreach ($this->chat->getuser($showmessage->id_user) as $shownameadmin)
+                  <p class="small mb-1">{{$shownameadmin->name}}</p>
+                  @endforeach
                   <p class="small mb-1 text-muted">{{$showmessage->created_at}}</p>
                 </div>
                 <div class="d-flex flex-row justify-content-start">
@@ -60,27 +64,29 @@
                 </div>
               @endif
                  {{-- show theo nhìn admin  --}}
-                 @if (Auth::user()->permission==2)
-                 @foreach ($Messageadmin as $item =>$value)
-                 @foreach ($this->getfistmessage=$this->chat->getfistmessage($item) as $show)
-                 <a class="nav-link" wire:click="detailmessage({{$item}})">
-                   <div class="d-flex justify-content-between">
-                    @foreach ($this->chat->getuser($show->id_user) as $item)
-                     <p class="small mb-1">{{$item->name}}</p>
-                    @endforeach
-                     <p class="small mb-1 text-muted">{{$show->created_at}}</p>
+               @if (Auth::check())
+               @if (Auth::user()->permission==2)
+               @foreach ($Messageadmin as $item =>$value)
+               @foreach ($this->getfistmessage=$this->chat->getfistmessage($item) as $show)
+               <a class="nav-link" wire:click="detailmessage({{$item}})">
+                 <div class="d-flex justify-content-between">
+                  @foreach ($this->chat->getuser($show->id_user) as $item)
+                   <p class="small mb-1">{{$item->name}}</p>
+                  @endforeach
+                   <p class="small mb-1 text-muted">{{$show->created_at}}</p>
+                 </div>
+                 <div class="d-flex flex-row justify-content-start">
+                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
+                     alt="avatar 1" style="width: 45px; height: 100%;">
+                   <div>
+                     <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">{{$show->content_message}}</p>
                    </div>
-                   <div class="d-flex flex-row justify-content-start">
-                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp"
-                       alt="avatar 1" style="width: 45px; height: 100%;">
-                     <div>
-                       <p class="small p-2 ms-3 mb-3 rounded-3" style="background-color: #f5f6f7;">{{$show->content_message}}</p>
-                     </div>
-                   </div>
-                 </a>
-                 @endforeach
-                @endforeach
-                 @endif
+                 </div>
+               </a>
+               @endforeach
+              @endforeach
+               @endif
+               @endif
           </div>
         </div>
       </div>

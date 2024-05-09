@@ -74,5 +74,6 @@
     <script src="{{asset('assets/Clients/js/ajax/productbycategory.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/cart.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/checkout.js')}}"></script>
+    <script src="{{asset('assets/Clients/js/customer/comment.js')}}"></script>
     @livewireScripts
 </html>
