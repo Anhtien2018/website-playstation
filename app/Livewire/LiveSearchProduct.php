@@ -16,14 +16,11 @@ class LiveSearchProduct extends Component
     public $selectedProvince='';
     public function __construct(){
         $this->product=new Product;
-        $this->checkout=new Checkout;
     }
     public function updatedSelectedProvince(){
       dd('ok');
     }
-    public function mount(){
-      $this->province=$this->checkout->getprovince();
-    }
+   
     public function render()
     {
         // gán bằng rỗng

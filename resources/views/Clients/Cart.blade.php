@@ -2,7 +2,8 @@
 @section('Title')
     {{$Title}}
 @endsection
-
+@section('Main')
+    
  <!-- Start Banner Area -->
  <section class="banner-area organic-breadcrumb">
     <div class="container">
@@ -19,7 +20,7 @@
 </section>
 <!-- End Banner Area -->
 <!--================Cart Area =================-->
-@if (count($cart)==0)
+@if (count($cart)==0 || !Auth::check())
 <div class="d-flex justify-content-center">
 <img class="w-25 " src="{{asset('assets/Clients/Image/banner/no-buy.png')}}" alt="">
     </div> 
@@ -76,6 +77,7 @@
     </div>
 </section>
 @endif
+@endsection
 
 
 

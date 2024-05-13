@@ -5,32 +5,26 @@ namespace App\Http\Controllers\Clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Checkout;
+use App\Models\CheckoutModel;
 use App\Models\Carts;
+use Flasher\Laravel\Http\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
-    public $checkout;
-    public $cart;
+  public $checkout;
     public function __construct(){
-        $this->checkout=new Checkout;        
-        $this->cart=new Carts;        
+      $this->checkout=new CheckoutModel;
     }
     public function checkout(Request $request){
         $Title="Checkout";
-        $province=$this->checkout->getprovince();
-        $cart=Session::get('cart',[]);
-        $total_price=$this->cart->totalprice();
-        return view('Clients.CheckOut',compact('Title','province','cart','total_price'));
+        return view('Clients.CheckOut',compact('Title'));
       }
-      public function getdistrict(Request $request,$id){
-       
-            $district=$this->checkout->getdistrict($id);
-            $options='';
-            foreach ($district as $show) {
-              $options .= '<option value="' . $show->maqh . '">' . $show->name . '</option>';
-            }
-            return response()->json(['options'=>$options]);
-        }
+    public function viewbill(){
+      $Title='Bill';
+      $data_order=$this->checkout->get_order(Auth::user()->id);
+      $data_order_detail=$this->checkout->get_order_detail($data_order[0]->id_order);
+      return view('Clients.BillOrder',compact('Title','data_order_detail','data_order'));
+    }
       }
 

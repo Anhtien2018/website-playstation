@@ -56,10 +56,12 @@
             <ul class="nav navbar-nav navbar-right">
               
               <li class="nav-item position-relative "  >
-                @if (count($cart)==0)
-                @else
-                <p style="height: 5px; margin-top: 10px; margin-left: 3px " class="position-absolute mt-10" >{{count($cart)}}</p>
-                @endif
+              @if (Auth::check())
+              @if (count($cart)==0)
+              @else
+              <p style="height: 5px; margin-top: 10px; margin-left: 3px " class="position-absolute mt-10" >{{count($cart)}}</p>
+              @endif
+              @endif
                 <a href="{{route('Cart.view')}}" class=""><span class="ti-bag"></span></a>
                 
               </li>
@@ -83,7 +85,7 @@
    
   </header>
   <!-- End Header Area -->
-<script src="{{asset('assets/Clients/js/ajax/home.js')}}"></script>
+
 {{-- modal chat --}}
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

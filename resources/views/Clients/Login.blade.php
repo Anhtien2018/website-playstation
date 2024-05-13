@@ -2,7 +2,7 @@
 @section('Title')
     {{$Title}}
 @endsection
-
+@section('Main')
 <!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
     <div class="container">
@@ -54,4 +54,5 @@
     </div>
 </section>
 <!--================End Login Box Area =================-->
+@endsection
 

@@ -67,7 +67,6 @@
     <!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="{{asset('assets/Clients/js/gmaps.min.js')}}"></script>
-    <script src="{{asset('assets/Clients/js/main.js')}}"></script>
     {{-- ajax --}}
     <script src="{{asset('assets/Clients/js/ajax/search_product.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/category.js')}}"></script>
@@ -75,5 +74,6 @@
     <script src="{{asset('assets/Clients/js/ajax/cart.js')}}"></script>
     <script src="{{asset('assets/Clients/js/ajax/checkout.js')}}"></script>
     <script src="{{asset('assets/Clients/js/customer/comment.js')}}"></script>
+    <script src="{{asset('assets/Clients/js/ajax/home.js')}}"></script>
     @livewireScripts
 </html>

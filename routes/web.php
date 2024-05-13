@@ -70,7 +70,9 @@ Route::prefix('Cart')->group(function(){
 
 });
         Route::get('/checkout',[CheckoutController::class,'checkout'])->name('Cart.checkout');
-        Route::get('/getdistrict/{id}',[CheckoutController::class,'getdistrict']);
+        Route::get('/bill',[CheckoutController::class,'viewbill'])->name('Cart.viewbill');
+        Route::get('/getdistrict',[CheckoutController::class,'getdistrict']);
 
    
+
 

@@ -2,7 +2,8 @@
 @section('Title')
     {{$Title}}
 @endsection
-    <!-- single product slide -->
+  @section('Main')
+        <!-- single product slide -->
     <div class="single-product-slider" style="margin-top: 140px">
         <div class="container">
      <div class="d-flex justify-content-between align-items-center p-2">
@@ -46,4 +47,5 @@
         </div>
     <!-- single product slide -->
         {{-- End boxproduct --}}
+  @endsection
        

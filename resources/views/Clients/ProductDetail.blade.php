@@ -2,6 +2,7 @@
 @section('Title')
     {{$Title}}
 @endsection
+@section('Main')
 <form action="{{route('Cart.addpost',$product_detail->id)}}" method="post">
     @csrf
 <!--================Single Product Area =================-->
@@ -203,6 +204,7 @@
     </div>
 </section>
 <!--================End Product Description Area =================-->
+@endsection
 
 
 <script src="{{asset('assets/Clients/js/customer/detail.js')}}"></script>

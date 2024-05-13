@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PasswordReset;
 use App\Models\User;
+use App\Models\Chat;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -19,9 +20,10 @@ use Illuminate\Support\Str;
 class AccountController extends Controller
 {
     protected $passwordreset;
+    public $chat;
     public function __construct() {
         $this->passwordreset=new PasswordReset;
-        
+        $this->chat=new Chat;
     }
     public function Register(){
         $Title='Đăng Ký';
@@ -109,6 +111,7 @@ class AccountController extends Controller
        return redirect()->route('Account.Login')->with('success','Đổi mật khẩu thành công');
     }
     public function Profile(){  
+       
         return view('Clients.Profile');
     }
 }

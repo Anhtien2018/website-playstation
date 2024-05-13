@@ -31,70 +31,27 @@ $(document).ready(function(){
     });
 
     // Search Toggle
-    $("#search_input_box").hide();
-    $("#search").on("click", function () {
-        $("#search_input_box").slideToggle();
-        $("#search_input").focus();
-    });
-    $("#close_search").on("click", function () {
-        $('#search_input_box').slideUp(500);
-    });
-
-    /*==========================
-		javaScript for sticky header
-		============================*/
-			$(".sticky-header").sticky();
+    
 
     /*=================================
     Javascript for banner area carousel
     ==================================*/
-    $(".active-banner-slider").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='/public/assets/Clients/Image/banner/next.png'>","<img src='Image/banner/next.png'>"],
-        dots:false
-    });
+  
 
     /*=================================
     Javascript for product area carousel
     ==================================*/
-    $(".active-product-area").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
-        dots:false
-    });
+   
 
     /*=================================
     Javascript for single product area carousel
     ==================================*/
-    $(".s_Product_carousel").owlCarousel({
-      items:1,
-      autoplay:false,
-      autoplayTimeout: 5000,
-      loop:true,
-      nav:false,
-      dots:true
-    });
+   
     
     /*=================================
     Javascript for exclusive area carousel
     ==================================*/
-    $(".active-exclusive-product-slider").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
-        dots:false
-    });
+   
 
     //--------- Accordion Icon Change ---------//
 
@@ -150,87 +107,16 @@ $(document).ready(function(){
             var submit = $('.submit-btn'); // submit button
             var alert = $('.alert-msg'); // alert div for show alert message
 
-            // form submit event
-            form.on('submit', function(e) {
-                e.preventDefault(); // prevent default form submit
-
-                $.ajax({
-                    url: 'booking.php', // form action url
-                    type: 'POST', // form submit method get/post
-                    dataType: 'html', // request type html/json/xml
-                    data: form.serialize(), // serialize form data
-                    beforeSend: function() {
-                        alert.fadeOut();
-                        submit.html('Sending....'); // change submit button text
-                    },
-                    success: function(data) {
-                        alert.html(data).fadeIn(); // fade in response data
-                        form.trigger('reset'); // reset form
-                        submit.attr("style", "display: none !important");; // reset submit button text
-                    },
-                    error: function(e) {
-                        console.log(e)
-                    }
-                });
-            });
+           
         });
 
 
 
 
-    $(document).ready(function() {
-        $('#mc_embed_signup').find('form').ajaxChimp();
-    });   
+    
 
 
 
-     if(document.getElementById("js-countdown")){
-
-        var countdown = new Date("October 17, 2018");
-
-        function getRemainingTime(endtime) {
-            var milliseconds = Date.parse(endtime) - Date.parse(new Date());
-            var seconds = Math.floor(milliseconds / 1000 % 60);
-            var minutes = Math.floor(milliseconds / 1000 / 60 % 60);
-            var hours = Math.floor(milliseconds / (1000 * 60 * 60) % 24);
-            var days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
-
-        return {
-            'total': milliseconds,
-            'seconds': seconds,
-            'minutes': minutes,
-            'hours': hours,
-            'days': days
-            };
-        }
-
-        function initClock(id, endtime) {
-            var counter = document.getElementById(id);
-            var daysItem = counter.querySelector('.js-countdown-days');
-            var hoursItem = counter.querySelector('.js-countdown-hours');
-            var minutesItem = counter.querySelector('.js-countdown-minutes');
-            var secondsItem = counter.querySelector('.js-countdown-seconds');
-
-        function updateClock() {
-            var time = getRemainingTime(endtime);
-
-            daysItem.innerHTML = time.days;
-            hoursItem.innerHTML = ('0' + time.hours).slice(-2);
-            minutesItem.innerHTML = ('0' + time.minutes).slice(-2);
-            secondsItem.innerHTML = ('0' + time.seconds).slice(-2);
-
-            if (time.total <= 0) {
-              clearInterval(timeinterval);
-            }
-            }
-
-            updateClock();
-            var timeinterval = setInterval(updateClock, 1000);
-        }
-
-        initClock('js-countdown', countdown);
-
-  };
 
 
 

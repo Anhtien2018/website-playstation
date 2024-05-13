@@ -11,6 +11,7 @@ use function Laravel\Prompts\alert;
 class Carts extends Model
 {
     public $table= "product";
+    protected $table1="vocher";
         public function checkquantitycart($id){
             return DB::table($this->table)->where('id','=',$id)->get();
         }
@@ -144,6 +145,8 @@ class Carts extends Model
             Session::put('cart', $cart);
             return $data;
         }
-    
+        public function checkvocher($name_vocher){
+            return DB::table($this->table1)->where('name_vocher','=',$name_vocher)->get()->toArray();
+        }
 
 }
