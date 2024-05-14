@@ -7,6 +7,7 @@ use App\Http\Controllers\Clients\ProductByCategoryController;
 use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\ProductDetailController;
 use App\Http\Controllers\Clients\CheckoutController;
+use App\Http\Controllers\Clients\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +47,7 @@ Route::prefix('Account')->group(function () {
     // Update Password
     Route::post('showformreset/{token}',[AccountController::class,'Auth_updatepassword'])->name('Account.Auth_updatepassword');
     // profile
-    Route::get('/Profile',[AccountController::class,'Profile'])->name('Account.Profile'); 
+    Route::get('/Profile',[ProfileController::class,'Profile'])->name('Account.Profile'); 
 });
     //  Product By category
     Route::get('/{id}-{slug}',[ProductByCategoryController::class,'ProductByCategory'])->name('ProductByCategory');

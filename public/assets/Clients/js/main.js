@@ -450,21 +450,3 @@ $(document).ready(function(){
 
  });
  
- function check_password() {
-  var password=document.getElementById('password');
- var check=document.getElementById('check');
-   if(check.checked){
-    password.type="text";
-   }else{
-    password.type="password";
-   }
-}
-function check_password_confirm() {
-  var password_confirm=document.getElementById('password_confirm');
-  var check_confirm=document.getElementById('check_confirm');
-  if(check_confirm.checked){
-    password_confirm.type="text";
-  }else{
-    password_confirm.type="password";
-  }
-}

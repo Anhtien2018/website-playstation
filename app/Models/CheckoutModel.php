@@ -68,5 +68,13 @@ class CheckoutModel extends Model
         where($this->table4.'.id_order','=',$id_order)->
         get()->groupBy('id_order');
     }
-
+    public function get_all_order($id_user){
+        return DB::table($this->table3)->where($this->table3.'.id_user','=',$id_user)->orderBy($this->table3.'.id_order','desc')->get();
+    }
+    public function get_orderby_order($id_user,$get_select){
+        return DB::table($this->table3)->where($this->table3.'.id_user','=',$id_user)->where($this->table3.'.status_order','=',$get_select)->orderBy($this->table3.'.id_order','desc')->get();
+    }
+    public function cancle_order($id_order){
+        return DB::table($this->table3)->where($this->table3.'.id_order','=',$id_order)->update([$this->table3.'.status_order'=>'huy-don']);
+    }
 }

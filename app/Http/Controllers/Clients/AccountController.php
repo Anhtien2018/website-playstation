@@ -110,8 +110,5 @@ class AccountController extends Controller
        $this->passwordreset->UpdatePassowrd($Phone,$Email,$Password);
        return redirect()->route('Account.Login')->with('success','Đổi mật khẩu thành công');
     }
-    public function Profile(){  
-       
-        return view('Clients.Profile');
-    }
+   
 }

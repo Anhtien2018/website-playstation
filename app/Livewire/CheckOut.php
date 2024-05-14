@@ -119,7 +119,6 @@ class CheckOut extends Component
     public function order(){
         // validate
         $this->validate();
-        
         // get data and create
         $this->data_order=[
             'id_user'=>Auth::user()->id,
@@ -157,6 +156,7 @@ class CheckOut extends Component
         // chuyển đến bill
         return redirect()->route('Cart.viewbill');
         }
+        
     public function render()
     {
             return view('livewire.check-out');

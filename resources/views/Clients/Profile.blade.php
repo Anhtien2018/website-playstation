@@ -1,4 +1,7 @@
 @extends('Layouts.Client')
+@section('Title')
+    {{$Title}}
+@endsection
 @section('Main')
 <!-- Start Banner Area -->
 <section class="banner-area organic-breadcrumb">
